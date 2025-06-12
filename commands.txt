@@ -1,4 +1,6 @@
-To create a new react application run:
+BACK END COMMANDS
+
+To create a new node application run:
 npm init -y
 
 install required packages
@@ -13,3 +15,27 @@ also create a script to run
 
 install nodemon to restart the server when we make changes
 npm i nodemon -D
+
+
+FRONT END COMMANDS
+ cd into frontend folder
+
+npm create vite@latest .
+
+npm install
+
+npm install -D tailwindcss@3 postcss autoprefixer
+npx tailwindcss init -p
+
+update the content in the tailwind.config file from https://v3.tailwindcss.com/docs/guides/vite
+
+update the index.css file from https://v3.tailwindcss.com/docs/guides/vite
+
+install daisyUI
+npm i -D daisyui@latest
+
+update tailwind config file from https://v4.daisyui.com/docs/install/
+
+install more packages
+npm i react-hot-toast react-router-dom axios zustand lucide-react
+ 
