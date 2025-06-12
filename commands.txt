@@ -1,0 +1,15 @@
+To create a new react application run:
+npm init -y
+
+install required packages
+npm i express dotenv cors helmet morgan @neondatabase/serverless @arcjet/node
+
+make sure to edit the package.json file to change the entry point and allow for the
+use of module imports by setting 
+"type": "module"
+
+also create a script to run
+"dev": "nodemon backend/server.js"
+
+install nodemon to restart the server when we make changes
+npm i nodemon -D
