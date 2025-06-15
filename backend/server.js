@@ -37,13 +37,17 @@ app.use(async (res, req, next) => {
       return;
     }
     //check for spoofed bots
-    if (decision.results.some((result) => result.reason.isBot() && result.reason.isSpoofed())) {
+    if (
+      decision.results.some(
+        (result) => result.reason.isBot() && result.reason.isSpoofed()
+      )
+    ) {
       res.status(403).json({ error: "Spoofed bot detected!" });
     }
     next();
   } catch (error) {
-    console.log("Arcjet error", error)
-    next(error)
+    console.log("Arcjet error", error);
+    next(error);
   }
 });
 
@@ -51,15 +55,25 @@ app.use("/api/products", productRoutes);
 
 async function initDB() {
   try {
-    await sql`
-      CREATE TABLE IF NOT EXISTS products (
-          id SERIAL PRIMARY KEY,
-          name VARCHAR(255) NOT NULL,
-          image VARCHAR(255) NOT NULL,
-          price DECIMAL(10, 2) NOT NULL,
-          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      )
-    `;
+    // WITH NEON
+    // await sql`
+    //   CREATE TABLE IF NOT EXISTS products (
+    //       id SERIAL PRIMARY KEY,
+    //       name VARCHAR(255) NOT NULL,
+    //       image VARCHAR(255) NOT NULL,
+    //       price DECIMAL(10, 2) NOT NULL,
+    //       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    //   )
+    // `;
+    await sql(
+      `CREATE TABLE IF NOT EXISTS products (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      image VARCHAR(255) NOT NULL,
+      price DECIMAL(10, 2) NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  )`
+    );
     console.log("Database initialized!");
   } catch (error) {
     console.log("Error initDB", error);
